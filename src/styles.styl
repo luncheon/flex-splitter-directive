@@ -1,0 +1,42 @@
+[data-horizontal-splitter]
+[data-vertical-splitter]
+  > *
+    flex none
+    overflow auto
+    box-sizing border-box
+
+  > [role=separator]
+    background-color: rgba(160,160,160,.15)
+    display flex
+    align-items center
+    justify-content center
+
+    &::before
+      content ''
+      box-sizing border-box
+      border 1px rgba(160,160,160,.7)
+
+[data-horizontal-splitter]
+  display flex
+
+  > [role=separator]
+    cursor ew-resize
+    width 7px
+
+    &::before
+      width 3px
+      height 32px
+      border-style none solid
+
+[data-vertical-splitter]
+  display flex
+  flex-direction column
+
+  > [role=separator]
+    cursor ns-resize
+    height 7px
+
+    &::before
+      width 32px
+      height 3px
+      border-style solid none
