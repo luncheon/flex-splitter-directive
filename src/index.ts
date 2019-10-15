@@ -4,8 +4,8 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
   if (!container || !pointerDownEvent.isPrimary || pointerDownEvent.button !== 0 || separator.getAttribute('role') !== 'separator') {
     return
   }
-  const vertical = container.hasAttribute('data-vertical-splitter')
-  const horizontal = container.hasAttribute('data-horizontal-splitter')
+  const vertical = container.hasAttribute('data-flex-splitter-vertical')
+  const horizontal = container.hasAttribute('data-flex-splitter-horizontal')
   if (!vertical && !horizontal) {
     return
   }

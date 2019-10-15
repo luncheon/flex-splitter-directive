@@ -5,8 +5,8 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     if (!container || !pointerDownEvent.isPrimary || pointerDownEvent.button !== 0 || separator.getAttribute('role') !== 'separator') {
         return;
     }
-    var vertical = container.hasAttribute('data-vertical-splitter');
-    var horizontal = container.hasAttribute('data-horizontal-splitter');
+    var vertical = container.hasAttribute('data-flex-splitter-vertical');
+    var horizontal = container.hasAttribute('data-flex-splitter-horizontal');
     if (!vertical && !horizontal) {
         return;
     }

@@ -15,16 +15,32 @@
         height: 100%;
         transition: all ease-out .3s;
       }
-      header, nav, section {
-        padding: .5em 1.5em;
-      }
-      ul {
-        padding: 0;
-        list-style: none;
-      }
       body[theme=dark] {
         background-color: #222;
         color: white;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        border-bottom: 1px solid rgba(160,160,160,.5);
+        margin-bottom: .5em;
+      }
+      header {
+        padding: 0 2em;
+      }
+      header > :first-child {
+        padding-top: 1em;
+      }
+      section {
+        padding: 1em 2em;
+      }
+      nav > ul {
+        padding: 1em 2em;
+        list-style: none;
+      }
+      li {
+        padding: .25em 0;
       }
       label {
         cursor: pointer;
@@ -35,6 +51,9 @@
       input[type=radio] {
         cursor: pointer;
         margin-right: .5em;
+      }
+      p {
+        margin-bottom: .5em;
       }
       a {
         cursor: pointer;
@@ -55,16 +74,21 @@
     </style>
     <script src="index.min.js"></script>
   </head>
-  <body data-vertical-splitter>
+  <body data-flex-splitter-vertical>
     <header>
-      <h1>splitter-directive</h1>
-      <p>Dead simple declarative panes splitter.<br>JS + CSS &lt; 1kB (gzipped) with no dependencies.</p>
+      <div style="display: flex; align-items: center;">
+        <h1>flex-splitter-directive</h1>
+        <a href="https://github.com/luncheon/flex-splitter-directive">
+          <img src="https://cdn.jsdelivr.net/npm/octicons@8.4.2/build/svg/mark-github.svg" alt="GitHub" style="margin-left: .75em; width: 2.25em; height: 2.25em;">
+        </a>
+      </div>
+      <p>Dead simple panes splitter based on flexbox.<br>JS + CSS &lt; 1kB (gzipped) with no dependencies.</p>
     </header>
 
     <div role="separator"></div>
 
-    <main data-horizontal-splitter style="flex: auto;">
-      <nav style="min-width: 80px; max-width: 240px; width: 160px;">
+    <main data-flex-splitter-horizontal style="flex: auto;">
+      <nav style="width: 160px;">
         <ul>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Installation</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Usage</a></li>
@@ -81,12 +105,23 @@
         </section>
         <section id="Usage">
           <h2>Usage</h2>
-          <pre><code class="hljs">T.B.D.</code></pre>
-          <div style="height: 500px;"></div>
+          <ol>
+            <li>Load CSS and JS.</li>
+            <li>Set <code>data-flex-splitter-horizontal</code> / <code>data-flex-splitter-vertical</code> attribute to the parent element of the panes.</li>
+            <li>Insert <code>&lt;div role="separator"&gt;&lt;/div&gt;</code> between each pane.</li>
+            <li>Set the following styles in each pane as required:
+              <ul>
+                <li><code>width</code> / <code>height</code> for the initial size.</li>
+                <li><code>min-width</code> / <code>min-height</code> for the minimum size.</li>
+                <li><code>max-width</code> / <code>max-height</code> for the maximum size.</li>
+                <li><code>flex: auto</code> for filling space.</li>
+              </ul>
+            </li>
+          </ol>
         </section>
         <section id="License">
           <h2>License</h2>
-          <div style="height: 500px;"></div>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="http://www.wtfpl.net/">WTFPL</a>
         </section>
       </article>
 
@@ -97,16 +132,21 @@
 
     <div role="separator"></div>
 
-    <footer style="margin-left: auto;">
-      Theme:
+    <footer style="display: flex; align-items: flex-start; justify-content: flex-end;">
       <label>
-        <input type="radio" name="theme" value="light" checked onchange="document.body.setAttribute('theme',this.value)">
+        <input type="radio" name="theme" value="light" onchange="document.body.setAttribute('theme',this.value);location.replace('#light')">
         Light
       </label>
       <label>
-        <input type="radio" name="theme" value="dark" onchange="document.body.setAttribute('theme',this.value)">
+        <input type="radio" name="theme" value="dark" onchange="document.body.setAttribute('theme',this.value);location.replace('#dark')">
         Dark
       </label>
     </footer>
+    <script>
+      (function (theme) {
+        document.body.setAttribute('theme', theme)
+        document.querySelector('input[type=radio][value=' + theme + ']').checked = true
+      })((location.hash || '#light').slice(1))
+    </script>
   </body>
 </html>

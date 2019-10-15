@@ -1,9 +1,9 @@
 {
-  "name": "splitter-directive",
+  "name": "flex-splitter-directive",
   "version": "0.0.0",
-  "description": "",
+  "description": "Dead simple panes splitter based on flexbox.",
   "license": "WTFPL",
-  "repository": "luncheon/splitter-directive",
+  "repository": "luncheon/flex-splitter-directive",
   "main": "index.min.js",
   "module": "index.min.js",
   "keywords": [
@@ -32,7 +32,7 @@
     "postcss-cli": "^6.1.3",
     "sane": "^4.1.0",
     "stylus": "^0.54.7",
-    "terser": "^4.3.8",
+    "terser": "^4.3.9",
     "typescript": "^3.6.4"
   }
 }
