@@ -6,10 +6,11 @@
 }
 [data-flex-splitter-horizontal] > [role=separator],
 [data-flex-splitter-vertical] > [role=separator] {
-  background-color: rgba(160,160,160,0.15);
+  touch-action: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(160,160,160,0.15);
 }
 [data-flex-splitter-horizontal] > [role=separator]::before,
 [data-flex-splitter-vertical] > [role=separator]::before {
