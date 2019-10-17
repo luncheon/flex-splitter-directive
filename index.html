@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>flex-splitter-directive - Dead simple panes splitter control based on flexbox.</title>
     <script>window.innerWidth<480&&document.querySelector('meta[name=viewport]').setAttribute('content','width=480,initial-scale=1')</script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github.css">
     <link rel="stylesheet" href="styles.min.css">
     <style>
       * {
         margin: 0;
+        -webkit-overflow-scrolling: touch;
       }
       html {
         height: 100%;
@@ -16,10 +18,6 @@
       body {
         height: 100%;
         transition: all ease-out .3s;
-      }
-      body[theme=dark] {
-        background-color: #222;
-        color: white;
       }
       h1 {
         font-size: 2em;
@@ -29,30 +27,26 @@
         margin-bottom: .5em;
       }
       header {
-        padding: 0 2em;
+        padding: 0 2rem;
       }
       header > :first-child {
-        padding-top: 1em;
+        margin-top: 1rem;
+      }
+      header > :last-child {
+        margin-bottom: 1rem;
+      }
+      footer {
+        padding: 1rem 2rem;
       }
       section {
-        padding: 1em 2em;
+        padding: 2rem;
       }
       nav > ul {
-        padding: 1em 2em;
+        padding: 1rem 2rem;
         list-style: none;
       }
       li {
         padding: .25em 0;
-      }
-      label {
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        padding: 0 .25em;
-      }
-      input[type=radio] {
-        cursor: pointer;
-        margin-right: .5em;
       }
       p {
         margin-bottom: .5em;
@@ -62,16 +56,21 @@
         color: #48f;
         text-decoration: none;
         padding: .125em 0;
-        display: block;
       }
       a:hover {
         color: #6af;
         text-decoration: underline;
       }
+      code {
+        background: #f4f4f4;
+        padding: .2em .4em;
+        font-size: 87.5%;
+        font-family: Consolas,Liberation Mono,Menlo,monospace;
+      }
       code.hljs {
+        background: #f4f4f4;
         margin: .5em 0;
         padding: .5em 1em;
-        font-family: Consolas,Liberation Mono,Menlo,monospace;
       }
     </style>
     <script src="index.min.js"></script>
@@ -84,7 +83,7 @@
           <img src="https://cdn.jsdelivr.net/npm/octicons@8.4.2/build/svg/mark-github.svg" alt="GitHub" style="margin-left: .75em; width: 2.25em; height: 2.25em;">
         </a>
       </div>
-      <p>Dead simple panes splitter based on flexbox.<br>JS + CSS &lt; 1kB (gzipped) with no dependencies.</p>
+      <p>Dead simple panes splitter control based on flexbox.</p>
     </header>
 
     <div role="separator"></div>
@@ -92,26 +91,49 @@
     <main data-flex-splitter-horizontal style="flex: auto;">
       <nav style="width: 160px;">
         <ul>
+          <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Introduction</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Installation</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Usage</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">License</a></li>
+          <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Others</a></li>
         </ul>
       </nav>
 
       <div role="separator"></div>
 
       <article style="flex: auto;">
+        <section id="Introduction">
+          <h2>Introduction</h2>
+          <p><code>flex-splitter-directive</code> is a flexbox-based panes splitter control.</p>
+          <ul>
+            <li><strong>Declarative.</strong><br>You don't need to write any JavaScript. Just add an attribute to the DOM element.</li>
+            <li><strong>Lightweight.</strong><br>JS + CSS &lt; 1kB (gzipped) with no dependencies.</li>
+            <li>
+              <strong>Maintainable.</strong> Ah, maybe.<br>
+              The source code contains only
+              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/index.ts">62 lines of TypeScript code</a>
+              and
+              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/styles.styl">43 lines of Stylus code</a>.<br>
+              If you don't like it partially, you can clone it and make changes.
+            </li>
+          </ul>
+        </section>
+
         <section id="Installation">
           <h2>Installation</h2>
+          <h3>npm</h3>
+          <pre><code class="hljs">T.B.D.</code></pre>
+          <h3>CDN</h3>
           <pre><code class="hljs">T.B.D.</code></pre>
         </section>
+
         <section id="Usage">
           <h2>Usage</h2>
           <ol>
             <li>Load CSS and JS.</li>
             <li>Set <code>data-flex-splitter-horizontal</code> / <code>data-flex-splitter-vertical</code> attribute to the parent element of the panes.</li>
             <li>Insert <code>&lt;div role="separator"&gt;&lt;/div&gt;</code> between each pane.</li>
-            <li>Set the following styles in each pane as required:
+            <li>Set the following styles for each pane as required:
               <ul>
                 <li><code>width</code> / <code>height</code> for the initial size.</li>
                 <li><code>min-width</code> / <code>min-height</code> for the minimum size.</li>
@@ -121,34 +143,38 @@
             </li>
           </ol>
         </section>
+
         <section id="License">
           <h2>License</h2>
           <a target="_blank" rel="nofollow noopener noreferrer" href="http://www.wtfpl.net/">WTFPL</a>
         </section>
+
+        <section id="Others">
+          <h2>Other vanilla-js panes splitters</h2>
+          <ul>
+            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/nathancahill/split">Split (nathancahill/split)</a></li>
+            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/andrienko/splitter">Splitter (andrienko/splitter)</a></li>
+            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/alesgenova/split-me">SplitMe (alesgenova/split-me)</a></li>
+          </ul>
+        </section>
       </article>
-
-      <div role="separator"></div>
-
-      <div style="min-width: 20%;"></div>
     </main>
 
     <div role="separator"></div>
 
-    <footer style="display: flex; align-items: flex-start; justify-content: flex-end;">
-      <label>
-        <input type="radio" name="theme" value="light" onchange="document.body.setAttribute('theme',this.value);location.replace('#light')">
-        Light
-      </label>
-      <label>
-        <input type="radio" name="theme" value="dark" onchange="document.body.setAttribute('theme',this.value);location.replace('#dark')">
-        Dark
-      </label>
+    <footer style="height: 320px; display: flex; flex-direction: column;">
+      <h2>Demo</h2>
+      <iframe
+        style="height: 100%; width: 100%; margin: 0;"
+        scrolling="no"
+        title="flex-splitter-directive demo"
+        src="https://codepen.io/luncheon/embed/KKKMLxE?height=265&theme-id=light&default-tab=html,result"
+        frameborder="no"
+        allowtransparency="true"
+        allowfullscreen="true"
+      >
+        See the Pen <a href='https://codepen.io/luncheon/pen/KKKMLxE'>flex-splitter-directive demo</a>.
+      </iframe>
     </footer>
-    <script>
-      (function (theme) {
-        document.body.setAttribute('theme', theme)
-        document.querySelector('input[type=radio][value=' + theme + ']').checked = true
-      })((location.hash || '#light').slice(1))
-    </script>
   </body>
 </html>

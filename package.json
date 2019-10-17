@@ -1,7 +1,7 @@
 {
   "name": "flex-splitter-directive",
   "version": "0.0.0",
-  "description": "Dead simple panes splitter based on flexbox.",
+  "description": "Dead simple pane-splitter control based on flexbox.",
   "license": "WTFPL",
   "repository": "luncheon/flex-splitter-directive",
   "main": "index.min.js",
@@ -21,8 +21,8 @@
     "build:js": "tsc -p . && terser -c -m -o index.min.js index.js && gzip-size index.min.js",
     "build:css": "stylus src/styles.styl -o styles.css && postcss styles.css -o styles.min.css --no-map -u cssnano && gzip-size styles.min.css",
     "watch": "npm-run-all clean -p watch:*",
-    "watch:js": "sane \"npm run build:js\" --glob=\"index.ts\"",
-    "watch:css": "sane \"npm run build:css\" --glob=\"styles.styl\""
+    "watch:js": "sane \"npm run build:js\" --glob=\"src/index.ts\"",
+    "watch:css": "sane \"npm run build:css\" --glob=\"src/styles.styl\""
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
