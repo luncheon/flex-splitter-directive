@@ -1,11 +1,18 @@
 {
   "name": "flex-splitter-directive",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Dead simple pane-splitter control based on flexbox.",
   "license": "WTFPL",
   "repository": "luncheon/flex-splitter-directive",
   "main": "index.min.js",
   "module": "index.min.js",
+  "files": [
+    "index.js",
+    "index.min.js",
+    "styles.css",
+    "styles.min.css",
+    "src"
+  ],
   "keywords": [
     "layout",
     "splitter",

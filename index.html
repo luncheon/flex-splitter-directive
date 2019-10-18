@@ -24,7 +24,10 @@
       }
       h2 {
         border-bottom: 1px solid rgba(160,160,160,.5);
-        margin-bottom: .5em;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        margin-top: 1rem;
       }
       header {
         padding: 0 2rem;
@@ -61,6 +64,9 @@
         color: #6af;
         text-decoration: underline;
       }
+      pre {
+        margin-bottom: 1rem;
+      }
       code {
         background: #f4f4f4;
         padding: .2em .4em;
@@ -95,7 +101,6 @@
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Installation</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Usage</a></li>
           <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">License</a></li>
-          <li><a onclick="document.getElementById(this.textContent).scrollIntoView({behavior:'smooth'})">Others</a></li>
         </ul>
       </nav>
 
@@ -111,9 +116,9 @@
             <li>
               <strong>Maintainable.</strong> Ah, maybe.<br>
               The source code contains only
-              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/index.ts">62 lines of TypeScript code</a>
+              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/index.ts">64 lines of TypeScript code</a>
               and
-              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/styles.styl">43 lines of Stylus code</a>.<br>
+              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/styles.styl">43 lines of Stylus code</a>.
               If you don't like it partially, you can clone it and make changes.
             </li>
           </ul>
@@ -121,10 +126,13 @@
 
         <section id="Installation">
           <h2>Installation</h2>
-          <h3>npm</h3>
-          <pre><code class="hljs">T.B.D.</code></pre>
+          <h3>npm <span style="font-weight: 400">(with a module bundler)</span></h3>
+          <pre><code class="hljs">npm i flex-splitter-directive</code></pre>
+          <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">"flex-splitter-directive"</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">"flex-splitter-directive/styles.min.css"</span></code></pre>
           <h3>CDN</h3>
-          <pre><code class="hljs">T.B.D.</code></pre>
+          <pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.1.0/styles.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.1.0"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">/script</span>&gt;</span></code></pre>
         </section>
 
         <section id="Usage">
@@ -147,15 +155,6 @@
         <section id="License">
           <h2>License</h2>
           <a target="_blank" rel="nofollow noopener noreferrer" href="http://www.wtfpl.net/">WTFPL</a>
-        </section>
-
-        <section id="Others">
-          <h2>Other vanilla-js panes splitters</h2>
-          <ul>
-            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/nathancahill/split">Split (nathancahill/split)</a></li>
-            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/andrienko/splitter">Splitter (andrienko/splitter)</a></li>
-            <li><a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/alesgenova/split-me">SplitMe (alesgenova/split-me)</a></li>
-          </ul>
         </section>
       </article>
     </main>
