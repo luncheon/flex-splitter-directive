@@ -10,6 +10,8 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     if (!vertical && !horizontal) {
         return;
     }
+    // prevent text selection
+    pointerDownEvent.preventDefault();
     var pointerId = pointerDownEvent.pointerId;
     var pane1 = separator.previousElementSibling;
     var pane2 = separator.nextElementSibling;

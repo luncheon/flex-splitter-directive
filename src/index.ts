@@ -9,6 +9,8 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
   if (!vertical && !horizontal) {
     return
   }
+  // prevent text selection
+  pointerDownEvent.preventDefault()
 
   const pointerId = pointerDownEvent.pointerId
   const pane1 = separator.previousElementSibling as HTMLElement
