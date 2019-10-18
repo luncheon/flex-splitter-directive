@@ -1,3 +1,7 @@
+[data-flex-splitter-horizontal],
+[data-flex-splitter-vertical] {
+  display: flex;
+}
 [data-flex-splitter-horizontal] > *,
 [data-flex-splitter-vertical] > * {
   flex: none;
@@ -18,9 +22,6 @@
   box-sizing: border-box;
   border: 1.25px rgba(160,160,160,0.7);
 }
-[data-flex-splitter-horizontal] {
-  display: flex;
-}
 [data-flex-splitter-horizontal] > [role=separator] {
   cursor: ew-resize;
   width: 8px;
@@ -31,7 +32,6 @@
   border-style: none solid;
 }
 [data-flex-splitter-vertical] {
-  display: flex;
   flex-direction: column;
 }
 [data-flex-splitter-vertical] > [role=separator] {

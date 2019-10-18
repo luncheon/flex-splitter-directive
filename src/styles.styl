@@ -1,5 +1,7 @@
 [data-flex-splitter-horizontal]
 [data-flex-splitter-vertical]
+  display flex
+
   > *
     flex none
     overflow auto
@@ -18,8 +20,6 @@
       border 1.25px rgba(160,160,160,.7)
 
 [data-flex-splitter-horizontal]
-  display flex
-
   > [role=separator]
     cursor ew-resize
     width 8px
@@ -30,7 +30,6 @@
       border-style none solid
 
 [data-flex-splitter-vertical]
-  display flex
   flex-direction column
 
   > [role=separator]
