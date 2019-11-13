@@ -37,13 +37,13 @@ import "flex-splitter-directive/styles.min.css"
 ## Usage
 
 1. Load CSS and JS.
-2. Set data-flex-splitter-horizontal / data-flex-splitter-vertical attribute to the parent element of the panes.
-3. Insert <div role="separator"></div> between each pane.
+2. Set `data-flex-splitter-horizontal` (or `data-flex-splitter-vertical` for vertical) attribute to the parent element of the panes.
+3. Insert `<div role="separator"></div>` between each pane.
 4. Set the following styles for each pane as required:
-  * `width` / `height` for the initial size.
-  * `min-width` / `min-height` for the minimum size.
-  * `max-width` / `max-height` for the maximum size.
-  * `flex: auto` for filling space.
+    * `width` / `height` for the initial size.
+    * `min-width` / `min-height` for the minimum size.
+    * `max-width` / `max-height` for the maximum size.
+    * `flex: auto` for filling space.
 
 
 ## License
