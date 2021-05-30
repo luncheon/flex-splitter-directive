@@ -15,6 +15,10 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     var pointerId = pointerDownEvent.pointerId;
     var pane1 = separator.previousElementSibling;
     var pane2 = separator.nextElementSibling;
+    if (getComputedStyle(container).flexDirection.indexOf('reverse') > 0) {
+        [pane1, pane2] = [pane2, pane1]
+    }
+
     var pane1ComputedStyle = getComputedStyle(pane1);
     var pane2ComputedStyle = getComputedStyle(pane2);
     var pane1Rect = pane1.getBoundingClientRect();
