@@ -13,8 +13,12 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
   pointerDownEvent.preventDefault()
 
   const pointerId = pointerDownEvent.pointerId
-  const pane1 = separator.previousElementSibling as HTMLElement
-  const pane2 = separator.nextElementSibling as HTMLElement
+  let pane1 = separator.previousElementSibling as HTMLElement
+  let pane2 = separator.nextElementSibling as HTMLElement
+  const containerStyle = getComputedStyle(container)
+  if ((containerStyle.flexDirection.indexOf('reverse') !== -1 ? -1 : 1) * (horizontal && containerStyle.direction === 'rtl' ? -1 : 1) === -1) {
+    [pane1, pane2] = [pane2, pane1]
+  }
   const pane1ComputedStyle = getComputedStyle(pane1)
   const pane2ComputedStyle = getComputedStyle(pane2)
   const pane1Rect = pane1.getBoundingClientRect()

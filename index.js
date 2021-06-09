@@ -1,5 +1,6 @@
 "use strict";
 addEventListener('pointerdown', function (pointerDownEvent) {
+    var _a;
     var separator = pointerDownEvent.target;
     var container = separator.parentElement;
     if (!container || !pointerDownEvent.isPrimary || pointerDownEvent.button !== 0 || separator.getAttribute('role') !== 'separator') {
@@ -15,10 +16,10 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     var pointerId = pointerDownEvent.pointerId;
     var pane1 = separator.previousElementSibling;
     var pane2 = separator.nextElementSibling;
-    if (getComputedStyle(container).flexDirection.indexOf('reverse') > 0) {
-        [pane1, pane2] = [pane2, pane1]
+    var containerStyle = getComputedStyle(container);
+    if ((containerStyle.flexDirection.indexOf('reverse') !== -1 ? -1 : 1) * (horizontal && containerStyle.direction === 'rtl' ? -1 : 1) === -1) {
+        _a = [pane2, pane1], pane1 = _a[0], pane2 = _a[1];
     }
-
     var pane1ComputedStyle = getComputedStyle(pane1);
     var pane2ComputedStyle = getComputedStyle(pane2);
     var pane1Rect = pane1.getBoundingClientRect();

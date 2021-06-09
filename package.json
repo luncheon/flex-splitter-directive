@@ -11,6 +11,8 @@
     "index.min.js",
     "styles.css",
     "styles.min.css",
+    "styles2.css",
+    "styles2.min.css",
     "src"
   ],
   "keywords": [
@@ -23,10 +25,10 @@
     "vanilla-js"
   ],
   "scripts": {
-    "clean": "node -e \"const fs=require('fs');['index.js','index.min.js','styles.css','styles.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
+    "clean": "node -e \"const fs=require('fs');['index.js','index.min.js','styles2.css','styles2.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
     "build": "npm-run-all clean build:*",
     "build:js": "tsc -p . && terser -c -m -o index.min.js index.js && gzip-size index.min.js",
-    "build:css": "stylus src/styles.styl -o styles.css && cleancss styles.css -o styles.min.css && gzip-size styles.min.css",
+    "build:css": "stylus src/styles2.styl -o styles2.css && cleancss styles2.css -o styles2.min.css && gzip-size styles2.min.css",
     "watch": "npm-run-all clean -p watch:*",
     "watch:js": "sane \"npm run build:js\" --glob=\"src/index.ts\"",
     "watch:css": "sane \"npm run build:css\" --glob=\"src/styles.styl\""
