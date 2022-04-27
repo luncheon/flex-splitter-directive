@@ -25,21 +25,23 @@
     "vanilla-js"
   ],
   "scripts": {
-    "clean": "node -e \"const fs=require('fs');['index.js','index.min.js','styles2.css','styles2.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
+    "clean": "node -e \"const fs=require('fs');['index.js','index.min.js','styles1.min.css','styles2.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
     "build": "npm-run-all clean build:*",
     "build:js": "tsc -p . && terser -c -m -o index.min.js index.js && gzip-size index.min.js",
-    "build:css": "stylus src/styles2.styl -o styles2.css && cleancss styles2.css -o styles2.min.css && gzip-size styles2.min.css",
+    "build:css": "cleancss styles.css -o styles.min.css && cleancss styles2.css -o styles2.min.css && gzip-size styles.min.css && gzip-size styles2.min.css",
     "watch": "npm-run-all clean -p watch:*",
     "watch:js": "sane \"npm run build:js\" --glob=\"src/index.ts\"",
     "watch:css": "sane \"npm run build:css\" --glob=\"src/styles.styl\""
   },
   "devDependencies": {
-    "clean-css-cli": "^5.4.2",
-    "gzip-size-cli": "^5.0.0",
+    "clean-css-cli": "^5.6.0",
+    "gzip-size-cli": "^5.1.0",
     "npm-run-all": "^4.1.5",
     "sane": "^5.0.1",
-    "stylus": "^0.55.0",
     "terser": "^5.9.0",
     "typescript": "^4.4.4"
+  },
+  "prettier": {
+    "printWidth": 140
   }
 }

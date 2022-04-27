@@ -7,7 +7,7 @@ Dead simple panes splitter control based on flexbox.
 * **Declarative.**  
   Just add an attribute to the DOM element. Don't need to write any JavaScript.
 * **Lightweight.**  
-  JS + CSS < 1kB (gzipped) with no dependencies.
+  JS + CSS ~ 1kB (gzipped) with no dependencies.
 * **Maintainable.** Ah, maybe.  
   The source code contains only [65 lines of TypeScript code](https://github.com/luncheon/flex-splitter-directive/blob/master/src/index.ts) and [43 lines of Stylus code](https://github.com/luncheon/flex-splitter-directive/blob/master/src/styles.styl).  
   If you don't like it partially, you can clone it and make changes.
