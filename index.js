@@ -13,9 +13,32 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     }
     // prevent text selection
     pointerDownEvent.preventDefault();
+    var getElementSibling = function (element, direction) {
+        // skip <template> elements
+        while ((element = element[direction + 'ElementSibling']) && element.tagName === "TEMPLATE") { }
+        return element;
+    };
+    (function () {
+        // save styles for multiple children with "flex: auto" or "flex-grow: 1" style
+        var child = container.firstElementChild;
+        var protectedStyleNames = [horizontal ? 'width' : 'height', 'flex', 'flexGrow', 'flexShrink', 'flexBasis'];
+        var _loop_1 = function () {
+            if (child.getAttribute('role') !== 'separator') {
+                var __flexSplitterStyle_1 = {};
+                var computedStyle_1 = getComputedStyle(child);
+                protectedStyleNames.forEach(function (name) { __flexSplitterStyle_1[name] = child.style[name]; });
+                protectedStyleNames.forEach(function (name) { child.style[name] = name.startsWith('flex') ? '' : computedStyle_1[name]; });
+                child.__flexSplitterStyle = __flexSplitterStyle_1;
+            }
+            child = getElementSibling(child, 'next');
+        };
+        while (child) {
+            _loop_1();
+        }
+    })();
     var pointerId = pointerDownEvent.pointerId;
-    var pane1 = separator.previousElementSibling;
-    var pane2 = separator.nextElementSibling;
+    var pane1 = getElementSibling(separator, 'previous');
+    var pane2 = getElementSibling(separator, 'next');
     var containerStyle = getComputedStyle(container);
     if ((containerStyle.flexDirection.indexOf('reverse') !== -1 ? -1 : 1) * (horizontal && containerStyle.direction === 'rtl' ? -1 : 1) === -1) {
         _a = [pane2, pane1], pane1 = _a[0], pane2 = _a[1];
@@ -56,6 +79,22 @@ addEventListener('pointerdown', function (pointerDownEvent) {
             separator.removeEventListener('pointermove', onPointerMove);
             separator.removeEventListener('pointerup', onPointerUp);
             separator.removeEventListener('pointercancel', onPointerUp);
+            (function () {
+                // restore styles except width | height
+                var child = container.firstElementChild;
+                var _loop_2 = function () {
+                    var __flexSplitterStyle = child.__flexSplitterStyle;
+                    if (__flexSplitterStyle) {
+                        ;
+                        (__flexSplitterStyle.flex ? ['flex'] : ['flexGrow', 'flexShrink', 'flexBasis']).forEach(function (name) { child.style[name] = __flexSplitterStyle[name]; });
+                        delete child.__flexSplitterStyle;
+                    }
+                    child = getElementSibling(child, 'next');
+                };
+                while (child) {
+                    _loop_2();
+                }
+            })();
         }
     };
     onPointerMove(pointerDownEvent);

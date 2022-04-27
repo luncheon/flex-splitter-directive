@@ -12,9 +12,31 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
   // prevent text selection
   pointerDownEvent.preventDefault()
 
+  const getElementSibling = (element: HTMLElement, direction: string): HTMLElement => {
+      // skip <template> elements
+      while ((element = (element as any)[direction + 'ElementSibling']) && element.tagName === "TEMPLATE") {}
+      return element as HTMLElement
+    }
+
+  ;(() => {
+    // save styles for multiple children with "flex: auto" or "flex-grow: 1" style
+    let child: HTMLElement = container.firstElementChild as HTMLElement
+    const protectedStyleNames = [horizontal ? 'width' : 'height', 'flex', 'flexGrow', 'flexShrink', 'flexBasis']
+    while(child) {
+      if (child.getAttribute('role') !== 'separator') {
+        const __flexSplitterStyle: any = {}
+        const computedStyle = getComputedStyle(child) as any
+        protectedStyleNames.forEach(name => {__flexSplitterStyle[name] = (child.style as any)[name]})
+        protectedStyleNames.forEach(name => {(child.style as any)[name] = name.startsWith('flex') ? '' : computedStyle[name]})
+        ;(child as any).__flexSplitterStyle = __flexSplitterStyle
+      }
+      child = getElementSibling(child, 'next')
+    }
+  })()
+
   const pointerId = pointerDownEvent.pointerId
-  let pane1 = separator.previousElementSibling as HTMLElement
-  let pane2 = separator.nextElementSibling as HTMLElement
+  let pane1 = getElementSibling(separator, 'previous')
+  let pane2 = getElementSibling(separator, 'next')
   const containerStyle = getComputedStyle(container)
   if ((containerStyle.flexDirection.indexOf('reverse') !== -1 ? -1 : 1) * (horizontal && containerStyle.direction === 'rtl' ? -1 : 1) === -1) {
     [pane1, pane2] = [pane2, pane1]
@@ -56,6 +78,19 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
       separator.removeEventListener('pointermove', onPointerMove)
       separator.removeEventListener('pointerup', onPointerUp)
       separator.removeEventListener('pointercancel', onPointerUp)
+
+      ;(() => {
+        // restore styles except width | height
+        let child: HTMLElement = container.firstElementChild as HTMLElement
+        while(child) {
+          const __flexSplitterStyle = (child as any).__flexSplitterStyle
+          if (__flexSplitterStyle) {
+            ;(__flexSplitterStyle.flex ? ['flex'] : ['flexGrow', 'flexShrink', 'flexBasis']).forEach(name => { (child.style as any)[name] = __flexSplitterStyle[name] })
+            delete (child as any).__flexSplitterStyle
+          }
+          child = getElementSibling(child, 'next')
+        }
+      })()
     }
   }
 
