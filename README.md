@@ -29,14 +29,14 @@ import "flex-splitter-directive/styles.min.css"
 ### CDN ([jsDelivr](https://www.jsdelivr.com/package/npm/flex-splitter-directive))
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.0/styles.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.0"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/styles.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1"></script>
 ```
 
 ### Download Directly
 
-* [index.min.js](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.0/index.min.js)
-* [styles.min.css](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.0/styles.min.css)
+* [index.min.js](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/index.min.js)
+* [styles.min.css](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/styles.min.css)
 
 
 ## Usage
