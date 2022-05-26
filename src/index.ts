@@ -52,7 +52,6 @@ addEventListener('pointerdown', (pointerDownEvent: PointerEvent) => {
 
   const onPointerUp = (event: PointerEvent) => {
     if (event.pointerId === pointerId) {
-      separator.releasePointerCapture(pointerId)
       separator.removeEventListener('pointermove', onPointerMove)
       separator.removeEventListener('pointerup', onPointerUp)
       separator.removeEventListener('pointercancel', onPointerUp)

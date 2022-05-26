@@ -52,7 +52,7 @@ addEventListener('pointerdown', function (pointerDownEvent) {
     }
     var onPointerUp = function (event) {
         if (event.pointerId === pointerId) {
-            separator.releasePointerCapture(pointerId);
+            // separator.releasePointerCapture(pointerId)
             separator.removeEventListener('pointermove', onPointerMove);
             separator.removeEventListener('pointerup', onPointerUp);
             separator.removeEventListener('pointercancel', onPointerUp);
