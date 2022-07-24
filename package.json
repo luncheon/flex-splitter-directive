@@ -1,14 +1,12 @@
 {
   "name": "flex-splitter-directive",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Dead simple pane-splitter control based on flexbox.",
   "license": "WTFPL",
   "repository": "luncheon/flex-splitter-directive",
-  "main": "index.min.js",
-  "module": "index.min.js",
+  "main": "index.js",
   "files": [
     "index.js",
-    "index.min.js",
     "styles.css",
     "styles.min.css",
     "styles2.css",
@@ -25,21 +23,12 @@
     "vanilla-js"
   ],
   "scripts": {
-    "clean": "node -e \"const fs=require('fs');['index.js','index.min.js','styles1.min.css','styles2.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
-    "build": "npm-run-all clean build:*",
-    "build:js": "tsc -p . && terser -c -m -o index.min.js index.js && gzip-size index.min.js",
-    "build:css": "cleancss styles.css -o styles.min.css && cleancss styles2.css -o styles2.min.css && gzip-size styles.min.css && gzip-size styles2.min.css",
-    "watch": "npm-run-all clean -p watch:*",
-    "watch:js": "sane \"npm run build:js\" --glob=\"src/index.ts\"",
-    "watch:css": "sane \"npm run build:css\" --glob=\"src/styles.styl\""
+    "clean": "node -e \"const fs=require('fs');['index.js','styles1.min.css','styles2.min.css'].forEach(f=>fs.existsSync(f)&&fs.unlinkSync(f))\"",
+    "build": "npm run clean && node build.mjs",
+    "start": "node build.mjs --serve"
   },
   "devDependencies": {
-    "clean-css-cli": "^5.6.1",
-    "gzip-size-cli": "^5.1.0",
-    "npm-run-all": "^4.1.5",
-    "sane": "^5.0.1",
-    "terser": "^5.14.2",
-    "typescript": "^4.7.4"
+    "esbuild": "^0.14.49"
   },
   "prettier": {
     "printWidth": 140

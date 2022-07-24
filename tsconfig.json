@@ -14,7 +14,5 @@
     "newLine": "LF",
     "outDir": "."
   },
-  "files": [
-    "src/index.ts"
-  ]
+  "files": ["src/index.ts", "src/keyboard.ts", "src/mover.ts", "src/pointer.ts"]
 }

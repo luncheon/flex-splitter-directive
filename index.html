@@ -79,7 +79,7 @@
         padding: .5em 1em;
       }
     </style>
-    <script src="index.min.js"></script>
+    <script src="index.js"></script>
   </head>
   <body data-flex-splitter-vertical>
     <header>
@@ -92,7 +92,7 @@
       <p>Dead simple panes splitter control based on flexbox.</p>
     </header>
 
-    <div role="separator"></div>
+    <div role="separator" tabindex="1"></div>
 
     <main data-flex-splitter-horizontal style="flex: auto;">
       <nav style="width: 160px;">
@@ -104,7 +104,7 @@
         </ul>
       </nav>
 
-      <div role="separator"></div>
+      <div role="separator" tabindex="1"></div>
 
       <article style="flex: auto;">
         <section id="Introduction">
@@ -112,15 +112,7 @@
           <p><code>flex-splitter-directive</code> is a flexbox-based panes splitter control.</p>
           <ul>
             <li><strong>Declarative.</strong><br>You don't need to write any JavaScript. Just add an attribute to the DOM element.</li>
-            <li><strong>Lightweight.</strong><br>JS + CSS &lt; 1kB (gzipped) with no dependencies.</li>
-            <li>
-              <strong>Maintainable.</strong> Ah, maybe.<br>
-              The source code contains only
-              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/index.ts">65 lines of TypeScript code</a>
-              and
-              <a href="https://github.com/luncheon/flex-splitter-directive/blob/master/src/styles.styl">43 lines of Stylus code</a>.
-              If you don't like it partially, you can clone it and make changes.
-            </li>
+            <li><strong>Lightweight.</strong><br>JS + CSS ~ 1.2kB (gzipped) with no dependencies.</li>
           </ul>
         </section>
 
@@ -131,8 +123,8 @@
           <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">"flex-splitter-directive"</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">"flex-splitter-directive/styles.min.css"</span></code></pre>
           <h3>CDN</h3>
-          <pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/styles.min.css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">/script</span>&gt;</span></code></pre>
+          <pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0/styles.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">/script</span>&gt;</span></code></pre>
         </section>
 
         <section id="Usage">
@@ -140,7 +132,7 @@
           <ol>
             <li>Load CSS and JS.</li>
             <li>Set <code>data-flex-splitter-horizontal</code> / <code>data-flex-splitter-vertical</code> attribute to the parent element of the panes.</li>
-            <li>Insert <code>&lt;div role="separator"&gt;&lt;/div&gt;</code> between each pane.</li>
+            <li>Insert <code>&lt;div role="separator" tabindex="1"&gt;&lt;/div&gt;</code> between each pane.</li>
             <li>Set the following styles for each pane as required:
               <ul>
                 <li><code>width</code> / <code>height</code> for the initial size.</li>
@@ -159,7 +151,7 @@
       </article>
     </main>
 
-    <div role="separator"></div>
+    <div role="separator" tabindex="1"></div>
 
     <footer style="height: 320px; display: flex; flex-direction: column;">
       <h2>Demo</h2>

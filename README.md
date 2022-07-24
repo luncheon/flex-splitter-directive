@@ -7,10 +7,7 @@ Dead simple panes splitter control based on flexbox.
 * **Declarative.**  
   Just add an attribute to the DOM element. Don't need to write any JavaScript.
 * **Lightweight.**  
-  JS + CSS ~ 1kB (gzipped) with no dependencies.
-* **Maintainable.** Ah, maybe.  
-  The source code contains only [69 lines of TypeScript](https://github.com/luncheon/flex-splitter-directive/blob/main/src/index.ts) and [49 lines of CSS](https://github.com/luncheon/flex-splitter-directive/blob/main/styles.css).  
-  If you don't like it partially, you can clone it and make changes.
+  JS + CSS ~ 1.2kB (gzipped) with no dependencies.
 
 
 ## Installation
@@ -29,21 +26,22 @@ import "flex-splitter-directive/styles.min.css"
 ### CDN ([jsDelivr](https://www.jsdelivr.com/package/npm/flex-splitter-directive))
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/styles.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0/styles.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0"></script>
 ```
 
 ### Download Directly
 
-* [index.min.js](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/index.min.js)
-* [styles.min.css](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.3.1/styles.min.css)
+* [index.js](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0/index.js)
+* [styles.min.css](https://cdn.jsdelivr.net/npm/flex-splitter-directive@0.4.0/styles.min.css)
 
 
 ## Usage
 
 1. Load CSS and JS.
 2. Set `data-flex-splitter-horizontal` (or `data-flex-splitter-vertical` for vertical) attribute to the parent element of the panes.
-3. Insert `<div role="separator"></div>` between each pane.
+    * Optionally, specify the `keyboard-movement` option, as in `data-flex-splitter-horizontal="keyboard-movement:10"`.
+3. Insert `<div role="separator" tabindex="1"></div>` between each pane.
 4. Set the following styles for each pane as required:
     * `width` / `height` for the initial size.
     * `min-width` / `min-height` for the minimum size.
