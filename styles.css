@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 :where(:is([data-flex-splitter-horizontal], [data-flex-splitter-vertical]) > [role="separator"]) {
+  position: relative;
   touch-action: none;
   display: flex;
   align-items: center;
@@ -23,6 +24,12 @@
   content: "";
   box-sizing: border-box;
   border: 4px rgba(160, 160, 160, 0.8);
+}
+:where(:is([data-flex-splitter-horizontal], [data-flex-splitter-vertical]) > [role="separator"])::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
 }
 :where([data-flex-splitter-horizontal] > [role="separator"]) {
   cursor: ew-resize;
