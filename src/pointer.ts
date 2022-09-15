@@ -31,4 +31,6 @@ addEventListener("pointerdown", (pointerDownEvent: PointerEvent) => {
   separator.addEventListener("pointerup", onPointerUp);
   separator.addEventListener("pointermove", onPointerMove);
   separator.setPointerCapture(pointerId);
+
+  pointerDownEvent.preventDefault()
 });
