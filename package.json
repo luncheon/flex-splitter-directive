@@ -1,6 +1,6 @@
 {
   "name": "flex-splitter-directive",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Dead simple pane-splitter control based on flexbox.",
   "license": "WTFPL",
   "repository": "luncheon/flex-splitter-directive",
