@@ -17,18 +17,16 @@ addEventListener("pointerdown", (pointerDownEvent: PointerEvent) => {
     ? (event) => event.pointerId === pointerId && move(event.clientX - pointerDownEvent.clientX)
     : (event) => event.pointerId === pointerId && move(event.clientY - pointerDownEvent.clientY);
 
-  const onPointerUp = (event: PointerEvent) => {
+  const onLostPointerCapture = (event: PointerEvent) => {
     if (event.pointerId === pointerId) {
       separator.removeEventListener("pointermove", onPointerMove);
-      separator.removeEventListener("pointerup", onPointerUp);
-      separator.removeEventListener("pointercancel", onPointerUp);
+      separator.removeEventListener("lostpointercapture", onLostPointerCapture);
     }
-  };
+  }
 
   onPointerMove(pointerDownEvent);
 
-  separator.addEventListener("pointercancel", onPointerUp);
-  separator.addEventListener("pointerup", onPointerUp);
+  separator.addEventListener("lostpointercapture", onLostPointerCapture)
   separator.addEventListener("pointermove", onPointerMove);
   separator.setPointerCapture(pointerId);
 
